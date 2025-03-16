@@ -8,6 +8,7 @@ public class GestoreCsv {
 
     public GestoreCsv(File fileAnalizzare){
         this.fileAnalizzare=fileAnalizzare;
+        System.out.println(fileAnalizzare.getPath());
     }
 
     public boolean controllaIncrementoCampi() throws RuntimeException{
@@ -26,7 +27,7 @@ public class GestoreCsv {
                 throw new RuntimeException("Dati già elaborati");
             else {
                 //Creo il nuovo file di appoggio
-                File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
+                File nuovoFile = new File("src/main/resources/com/example/pratica1225/dati/dortenzio1.csv");
                 File vecchioFile = this.fileAnalizzare;
                 nuovoFile.createNewFile();
                 PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
@@ -46,7 +47,7 @@ public class GestoreCsv {
 
                 //Rinominare il nuovo file dopo cancellare il vecchio
                 vecchioFile.delete();
-                nuovoFile.renameTo(new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv"));
+                nuovoFile.renameTo(new File("src/main/resources/com/example/pratica1225/dati/dortenzio.csv"));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -105,7 +106,7 @@ public class GestoreCsv {
         try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
             String [] recordControllo=reader.readLine().split(";");
             //Creo il nuovo file di appoggio
-            File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
+            File nuovoFile = new File("src/main/resources/com/example/pratica1225/dati/dortenzio1.csv");
             File vecchioFile = this.fileAnalizzare;
             nuovoFile.createNewFile();
             PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
@@ -136,7 +137,7 @@ public class GestoreCsv {
 
             //Rinominare il nuovo file dopo cancellare il vecchio
             vecchioFile.delete();
-            nuovoFile.renameTo(new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv"));
+            nuovoFile.renameTo(new File("src/main/resources/com/example/pratica1225/dati/dortenzio.csv"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -148,7 +149,7 @@ public class GestoreCsv {
             if (controllaIncrementoCampi() && !(record instanceof RecordAggiunte))
                 throw new RuntimeException("Record inserito non corretto");
             else {
-                PrintWriter writerNuovo = new PrintWriter(new FileWriter("src/main/java/com/example/pratica1225/dati/dortenzio.csv", true));
+                PrintWriter writerNuovo = new PrintWriter(new FileWriter(this.fileAnalizzare, true));
                 writerNuovo.println(record.toString());
                 writerNuovo.flush();
                 writerNuovo.close();
@@ -205,7 +206,7 @@ public class GestoreCsv {
                     throw new RuntimeException("Record non trovato");
                 }  else{
                     //Creo il nuovo file di appoggio
-                    File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
+                    File nuovoFile = new File("src/main/resources/com/example/pratica1225/dati/dortenzio1.csv");
                     File vecchioFile = this.fileAnalizzare;
                     nuovoFile.createNewFile();
                     PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
@@ -226,7 +227,7 @@ public class GestoreCsv {
 
                     //Rinominare il nuovo file dopo cancellare il vecchio
                     vecchioFile.delete();
-                    nuovoFile.renameTo(new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv"));
+                    nuovoFile.renameTo(new File("src/main/resources/com/example/pratica1225/dati/dortenzio.csv"));
                     return true;
                 }
             }
@@ -246,7 +247,7 @@ public class GestoreCsv {
                     throw new RuntimeException("Record non trovato");
                 }  else{
                     //Creo il nuovo file di appoggio
-                    File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
+                    File nuovoFile = new File("src/main/resources/com/example/pratica1225/dati/dortenzio1.csv");
                     File vecchioFile = this.fileAnalizzare;
                     nuovoFile.createNewFile();
                     PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
@@ -275,7 +276,7 @@ public class GestoreCsv {
 
                     //Rinominare il nuovo file dopo cancellare il vecchio
                     vecchioFile.delete();
-                    nuovoFile.renameTo(new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv"));
+                    nuovoFile.renameTo(new File("src/main/resources/com/example/pratica1225/dati/dortenzio.csv"));
                     return true;
                 }
             }

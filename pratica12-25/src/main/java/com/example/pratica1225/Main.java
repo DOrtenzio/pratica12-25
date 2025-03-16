@@ -6,8 +6,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        File file = new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv");
-        GestoreCsv gestore = new GestoreCsv(file);
+        GestoreCsv gestore = new GestoreCsv(new File("src/main/resources/com/example/pratica1225/dati/dortenzio.csv"));
         int scelta;
 
         do {
@@ -141,6 +140,7 @@ public class Main {
                     break;
                 case 0:
                     System.out.println("Ciaoooo");
+                    break;
                 default:
                     System.out.println("Scelta non valida.");
             }
