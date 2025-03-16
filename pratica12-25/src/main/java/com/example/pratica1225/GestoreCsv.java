@@ -1,7 +1,6 @@
 package com.example.pratica1225;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class GestoreCsv {
@@ -52,6 +51,7 @@ public class GestoreCsv {
         try {
             BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
             String [] recordControllo=reader.readLine().split(";");
+            reader.close();
             return recordControllo.length;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -60,8 +60,7 @@ public class GestoreCsv {
 
     //calcolare la lunghezza massima dei record presenti (avanzato: indicando anche la lunghezza massima di ogni campo);
     public int maxRecord() throws RuntimeException{
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
             int maxRecord=0;
             String [] recordControllo=reader.readLine().split(";"); //Elimino l'intestazione dal conteggio e conto il numero di campi
             String next;
@@ -76,8 +75,7 @@ public class GestoreCsv {
     }
 
     public int lunghezzaMaxCampo(int numCampo) throws ArrayIndexOutOfBoundsException{
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
             int maxCampo=0;
             String [] recordControllo=reader.readLine().split(";"); //Elimino l'intestazione dal conteggio e conto il numero di campi
             if (recordControllo.length<numCampo || numCampo<0)
@@ -98,8 +96,7 @@ public class GestoreCsv {
 
     //inserire in ogni record un numero di spazi necessari a rendere fissa la dimensione di tutti i record, senza perdere informazioni.
     public void spaziamentoFisso() throws RuntimeException{
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
             String [] recordControllo=reader.readLine().split(";");
             //Creo il nuovo file di appoggio
             File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
@@ -141,10 +138,9 @@ public class GestoreCsv {
 
     //Aggiungere un record in coda;
     public void aggiungiRecord (Record record) throws RuntimeException{
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
             String [] recordControllo=reader.readLine().split(";");
-            if (recordControllo.length>10 && record instanceof RecordAggiunte)
+            if (recordControllo.length>10 && !(record instanceof RecordAggiunte))
                 throw new RuntimeException("Record inserito non corretto");
             else {
                 PrintWriter writerNuovo = new PrintWriter(new FileWriter("src/main/java/com/example/pratica1225/dati/dortenzio.csv", true));
@@ -157,8 +153,167 @@ public class GestoreCsv {
         }
     }
     //Visualizzare dei dati mostrando tre campi significativi a scelta;
-    public String filtraCampi(int campo1, int campo2, int capo3){
-        //TODO: COMPLETARE ED AGGIUNGERE ALTRI DUE METODI OLTRE CHE UNA LOGICA DI TEST ALMENO TESTUALE
-        return null;
+    public String filtraCampi(int campo1, int campo2, int campo3) throws RuntimeException{
+        String datiDaMostrare="";
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            String [] recordControllo=reader.readLine().split(";");
+            if (campo1 < 0 || campo2 < 0 || campo3 < 0 || campo1 > recordControllo.length-1|| campo2 > recordControllo.length-1 || campo3 > recordControllo.length-1 )
+                throw new RuntimeException("Campo non presente");
+            else {
+               String next;
+               while ((next=reader.readLine())!=null){
+                   String [] recordAttuale=next.split(";");
+                   datiDaMostrare=datiDaMostrare+recordAttuale[campo1]+";"+recordAttuale[campo2]+";"+recordAttuale[campo3]+"\n";
+               }
+               return datiDaMostrare;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //Ricercare un record per campo chiave a scelta (se esiste, utilizzare il campo che contiene dati univoci);
+    //Nel nostro caso useremo il campo 3 che rappresenta il nome italiano del rifugio che dovrebbe essere univoco
+    public int cercaRecord(String nomeItalianoRifugio) throws RuntimeException{
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            int numeroRecord=-1;
+            String next;
+            while ((next=reader.readLine())!=null){
+                numeroRecord++;
+                String [] recordAttuale=next.split(";");
+                if (recordAttuale[2].equalsIgnoreCase(nomeItalianoRifugio))
+                    return numeroRecord;
+            }
+            return -1;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Modifica di un record
+    public boolean modificaRecord(Record recordVecchio, Record recordNuovo) throws RuntimeException{
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            String [] recordControllo=reader.readLine().split(";");
+            if (recordControllo.length>10 && !(recordNuovo instanceof RecordAggiunte)  && !(recordVecchio instanceof RecordAggiunte) )
+                throw new RuntimeException("Record inseriti non corretti in relazione al csv");
+            else {
+                int pos=cercaRecord(recordVecchio.getNomeItaliano());
+                if (pos==-1) {
+                    throw new RuntimeException("Record non trovato");
+                }  else{
+                    //Creo il nuovo file di appoggio
+                    File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
+                    File vecchioFile = this.fileAnalizzare;
+                    nuovoFile.createNewFile();
+                    PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
+
+                    //Leggo e stampo in nuovo file
+                    for (String campo: recordControllo) {//Intestazione
+                        writerNuovo.print(campo);
+                        if (!campo.equalsIgnoreCase(recordControllo[recordControllo.length-1]))
+                            writerNuovo.print(";");
+                    }
+                    writerNuovo.println();
+                    int recordAnalizzati=0;
+                    String next; //Dati
+                    while ((next = reader.readLine()) != null) {
+                        if (recordAnalizzati==pos) {
+                            writerNuovo.println(recordNuovo.toString());
+                        }else{
+                            writerNuovo.println(next);
+                        }
+                        recordAnalizzati++;
+                    }
+                    writerNuovo.flush();
+                    writerNuovo.close();
+
+                    //Rinominare il nuovo file dopo cancellare il vecchio
+                    vecchioFile.delete();
+                    nuovoFile.renameTo(new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv"));
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Cancella logicamente
+    public boolean cancellaRecord(String recordDaCancellare) throws RuntimeException{
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            String [] recordControllo=reader.readLine().split(";");
+            if (recordControllo.length<=10)
+                throw new RuntimeException("Cancellazione impossibile, ricordarsi di inserire i nuovi campi.");
+            else {
+                int pos=cercaRecord(recordDaCancellare);
+                if (pos==-1) {
+                    throw new RuntimeException("Record non trovato");
+                }  else{
+                    //Creo il nuovo file di appoggio
+                    File nuovoFile = new File("src/main/java/com/example/pratica1225/dati/dortenzio1.csv");
+                    File vecchioFile = this.fileAnalizzare;
+                    nuovoFile.createNewFile();
+                    PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
+
+                    //Leggo e stampo in nuovo file
+                    for (String campo: recordControllo) {//Intestazione
+                        writerNuovo.print(campo);
+                        if (!campo.equalsIgnoreCase(recordControllo[recordControllo.length-1]))
+                            writerNuovo.print(";");
+                    }
+
+                    writerNuovo.println();
+                    int recordAnalizzati=0;
+                    String next; //Dati
+                    while ((next = reader.readLine()) != null) {
+                        if (recordAnalizzati==pos) {
+                            String [] record=next.split(";");
+                            record[record.length-1]="false";
+                            for (String campo : record){
+                                if (!campo.equalsIgnoreCase("false"))
+                                    writerNuovo.print(campo+";");
+                                else
+                                    writerNuovo.print(campo);
+                            }
+                            writerNuovo.println();
+                        }else{
+                            writerNuovo.println(next);
+                        }
+                        recordAnalizzati++;
+                    }
+                    writerNuovo.flush();
+                    writerNuovo.close();
+
+                    //Rinominare il nuovo file dopo cancellare il vecchio
+                    vecchioFile.delete();
+                    nuovoFile.renameTo(new File("src/main/java/com/example/pratica1225/dati/dortenzio.csv"));
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Visualizza i campi visibili
+    public String vediCampi() throws RuntimeException{
+        String datiDaMostrare="";
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            String [] recordControllo=reader.readLine().split(";");
+            if (recordControllo.length>10) { //Controllo logico
+                String next;
+                while ((next=reader.readLine())!=null){
+                    String [] recordAttuale=next.split(";");
+                    if (Boolean.parseBoolean(recordAttuale[recordControllo.length-1]))
+                        datiDaMostrare=datiDaMostrare+next+"\n";
+                }
+                return datiDaMostrare;
+            } else { //Nessun controllo logico
+                String next;
+                while ((next=reader.readLine())!=null) datiDaMostrare=datiDaMostrare+next+"\n";
+                return datiDaMostrare;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
