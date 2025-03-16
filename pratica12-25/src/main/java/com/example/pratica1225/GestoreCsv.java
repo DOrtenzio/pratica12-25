@@ -10,12 +10,19 @@ public class GestoreCsv {
         this.fileAnalizzare=fileAnalizzare;
     }
 
+    public boolean controllaIncrementoCampi() throws RuntimeException{
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            String [] recordControllo=reader.readLine().split(";");
+            return recordControllo.length>10;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //Aggiungere, in coda ad ogni record, un campo chiamato "miovalore", contenente un numero casuale compreso tra 10<=X<=20 ed un campo per marcare la cancellazione logica;
     public void aggiungiCampi() throws RuntimeException{
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
-            String [] recordControllo=reader.readLine().split(";");
-            if (recordControllo.length>10)
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            if (controllaIncrementoCampi())
                 throw new RuntimeException("Dati già elaborati");
             else {
                 //Creo il nuovo file di appoggio
@@ -25,15 +32,15 @@ public class GestoreCsv {
                 PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
 
                 //Leggo e stampo in nuovo file
-                for (String campo: recordControllo) {//Intestazione
-                    writerNuovo.print(campo);
-                    if (!campo.equalsIgnoreCase(recordControllo[recordControllo.length-1]))
-                        writerNuovo.print(";");
+                boolean isIntestazione=true;
+                String next; //Dati ed Intestazione
+                while ((next = reader.readLine()) != null) {
+                    if (isIntestazione){
+                        writerNuovo.println(next + "; " +"mio_parametro; " + "cancellazione_logica");
+                        isIntestazione= false;
+                    }else
+                     writerNuovo.println(next + ";" + (new Random().nextInt(11) + 10) + ";" + true);
                 }
-                writerNuovo.println();
-                String next; //Dati
-                while ((next = reader.readLine()) != null)
-                    writerNuovo.println(next + ";" + (new Random().nextInt(11) + 10) + ";" + true);
                 writerNuovo.flush();
                 writerNuovo.close();
 
@@ -48,10 +55,8 @@ public class GestoreCsv {
 
     //contare il numero dei campi che compongono il record.
     public int contaCampi() throws RuntimeException{
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare));
+        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
             String [] recordControllo=reader.readLine().split(";");
-            reader.close();
             return recordControllo.length;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -61,8 +66,9 @@ public class GestoreCsv {
     //calcolare la lunghezza massima dei record presenti (avanzato: indicando anche la lunghezza massima di ogni campo);
     public int maxRecord() throws RuntimeException{
         try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+            reader.readLine(); //Elimino l'intestazione dal conteggio
+
             int maxRecord=0;
-            String [] recordControllo=reader.readLine().split(";"); //Elimino l'intestazione dal conteggio e conto il numero di campi
             String next;
             while ((next = reader.readLine()) != null){
                 if (next.length()>maxRecord)
@@ -139,8 +145,7 @@ public class GestoreCsv {
     //Aggiungere un record in coda;
     public void aggiungiRecord (Record record) throws RuntimeException{
         try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
-            String [] recordControllo=reader.readLine().split(";");
-            if (recordControllo.length>10 && !(record instanceof RecordAggiunte))
+            if (controllaIncrementoCampi() && !(record instanceof RecordAggiunte))
                 throw new RuntimeException("Record inserito non corretto");
             else {
                 PrintWriter writerNuovo = new PrintWriter(new FileWriter("src/main/java/com/example/pratica1225/dati/dortenzio.csv", true));
@@ -192,8 +197,7 @@ public class GestoreCsv {
     //Modifica di un record
     public boolean modificaRecord(Record recordVecchio, Record recordNuovo) throws RuntimeException{
         try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
-            String [] recordControllo=reader.readLine().split(";");
-            if (recordControllo.length>10 && !(recordNuovo instanceof RecordAggiunte)  && !(recordVecchio instanceof RecordAggiunte) )
+            if (controllaIncrementoCampi() && !(recordNuovo instanceof RecordAggiunte)  && !(recordVecchio instanceof RecordAggiunte) )
                 throw new RuntimeException("Record inseriti non corretti in relazione al csv");
             else {
                 int pos=cercaRecord(recordVecchio.getNomeItaliano());
@@ -207,13 +211,7 @@ public class GestoreCsv {
                     PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
 
                     //Leggo e stampo in nuovo file
-                    for (String campo: recordControllo) {//Intestazione
-                        writerNuovo.print(campo);
-                        if (!campo.equalsIgnoreCase(recordControllo[recordControllo.length-1]))
-                            writerNuovo.print(";");
-                    }
-                    writerNuovo.println();
-                    int recordAnalizzati=0;
+                    int recordAnalizzati=-1;
                     String next; //Dati
                     while ((next = reader.readLine()) != null) {
                         if (recordAnalizzati==pos) {
@@ -240,8 +238,7 @@ public class GestoreCsv {
     //Cancella logicamente
     public boolean cancellaRecord(String recordDaCancellare) throws RuntimeException{
         try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
-            String [] recordControllo=reader.readLine().split(";");
-            if (recordControllo.length<=10)
+            if (controllaIncrementoCampi())
                 throw new RuntimeException("Cancellazione impossibile, ricordarsi di inserire i nuovi campi.");
             else {
                 int pos=cercaRecord(recordDaCancellare);
@@ -255,14 +252,7 @@ public class GestoreCsv {
                     PrintWriter writerNuovo = new PrintWriter(new FileWriter(nuovoFile));
 
                     //Leggo e stampo in nuovo file
-                    for (String campo: recordControllo) {//Intestazione
-                        writerNuovo.print(campo);
-                        if (!campo.equalsIgnoreCase(recordControllo[recordControllo.length-1]))
-                            writerNuovo.print(";");
-                    }
-
-                    writerNuovo.println();
-                    int recordAnalizzati=0;
+                    int recordAnalizzati=-1;
                     String next; //Dati
                     while ((next = reader.readLine()) != null) {
                         if (recordAnalizzati==pos) {
@@ -298,13 +288,18 @@ public class GestoreCsv {
     public String vediCampi() throws RuntimeException{
         String datiDaMostrare="";
         try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
-            String [] recordControllo=reader.readLine().split(";");
-            if (recordControllo.length>10) { //Controllo logico
+            if (controllaIncrementoCampi()) { //Controllo logico
                 String next;
+                boolean isIntestazione=true;
                 while ((next=reader.readLine())!=null){
-                    String [] recordAttuale=next.split(";");
-                    if (Boolean.parseBoolean(recordAttuale[recordControllo.length-1]))
-                        datiDaMostrare=datiDaMostrare+next+"\n";
+                    if (isIntestazione) {
+                        datiDaMostrare = datiDaMostrare + next + "\n";
+                        isIntestazione=false;
+                    } else {
+                        String[] recordAttuale = next.split(";");
+                        if (Boolean.parseBoolean(recordAttuale[recordAttuale.length - 1]))
+                            datiDaMostrare = datiDaMostrare + next + "\n";
+                    }
                 }
                 return datiDaMostrare;
             } else { //Nessun controllo logico
