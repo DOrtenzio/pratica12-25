@@ -10,8 +10,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.util.*;
 
-import java.util.concurrent.TimeUnit;
-
 
 public class HelloController{
     private GestoreCsv gestoreCsv;
@@ -27,6 +25,15 @@ public class HelloController{
 
     public void setGestoreCsv(GestoreCsv gestoreCsv) {
         this.gestoreCsv = gestoreCsv;
+        //Vista di tutti gli elementi (così per bellezza)
+        prefVBox.getChildren().clear();
+        Label label = new Label(gestoreCsv.vediCampi());
+        label.setAlignment(Pos.TOP_LEFT);
+        label.setPrefWidth(412.0);
+        label.setWrapText(true);
+        label.setFont(new Font("Tw Cen MT Condensed Extra Bold", 12.0));
+        VBox.setVgrow(label, Priority.ALWAYS);
+        prefVBox.getChildren().add(label);
     }
 
     @FXML
@@ -35,7 +42,7 @@ public class HelloController{
         addNewRecordList("LISTA DEI METODI GIA' ATTUATI: ");
         entrataAnchor(box1,-300,0);
         entrataAnchor(box2,-300,0);
-        entrataAnchor(box3,1300,900);
+        entrataAnchor(box3,1300,0);
         b1.setOnMouseMoved(event -> b1.setStyle("-fx-border-color: #42f5a7; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
         b1.setOnMouseExited(event -> b1.setStyle("-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
         b2.setOnMouseMoved(event -> b2.setStyle("-fx-border-color: #42f5a7; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
@@ -67,9 +74,14 @@ public class HelloController{
             prefVBox.getChildren().clear();
             gestoreCsv.aggiungiCampi();
             prefLabel.setText("Campi aggiunti con successo");
-            addNewRecordList("Aggiunta campi");
+            Pane pane = new Pane();
+            pane.setStyle("-fx-background-color: e6ccb2;");
+            pane.setPrefSize(251,424);
+            prefVBox.getChildren().add(pane);
         } catch (RuntimeException e) {
             errorHelp(e.getMessage());
+        } finally {
+            addNewRecordList("Aggiunta campi");
         }
     }
 
@@ -79,9 +91,14 @@ public class HelloController{
             prefVBox.getChildren().clear();
             int temp=gestoreCsv.contaCampi();
             prefLabel.setText("Campi presenti per record : "+temp);
-            addNewRecordList("Conta campi");
+            Pane pane = new Pane();
+            pane.setStyle("-fx-background-color: e6ccb2;");
+            pane.setPrefSize(251,424);
+            prefVBox.getChildren().add(pane);
         } catch (RuntimeException e) {
             errorHelp(e.getMessage());
+        } finally {
+            addNewRecordList("Conta campi");
         }
     }
 
@@ -90,9 +107,14 @@ public class HelloController{
         try {
             int temp=gestoreCsv.maxRecord();
             prefLabel.setText("Lunghezza massima di un record : "+temp);
-            addNewRecordList("Max record");
+            Pane pane = new Pane();
+            pane.setStyle("-fx-background-color: e6ccb2;");
+            pane.setPrefSize(251,424);
+            prefVBox.getChildren().add(pane);
         } catch (RuntimeException e) {
             errorHelp(e.getMessage());
+        } finally {
+            addNewRecordList("Max record");
         }
     }
 
@@ -102,23 +124,31 @@ public class HelloController{
             //Creazione di richiesta in input
             prefVBox.getChildren().clear();
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo: "));
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
             prefVBox.getChildren().add(creaPaneSpaziatrice());
-            Button b=creaButton();
+            Button b=creaButton("Continua");
             b.setOnMouseClicked(e->{
-                //Esecuzione
-                prefLabel.setText("Lunghezza massima di un campo : "+gestoreCsv.lunghezzaMaxCampo(Integer.parseInt(t1.getText())));
-                addNewRecordList("Max campo");
-                prefVBox.getChildren().clear();
+                try {
+                    //Esecuzione
+                    prefLabel.setText("Lunghezza massima di un campo : "+gestoreCsv.lunghezzaMaxCampo(Integer.parseInt(t1.getText())));
+                    prefVBox.getChildren().clear();
+                } catch (Exception e1){
+                    errorHelp(e1.getMessage());
+                }
             });
             prefVBox.getChildren().add(b);
+            Pane pane = new Pane();
+            pane.setStyle("-fx-background-color: e6ccb2;");
+            pane.setPrefSize(100,424);
+            prefVBox.getChildren().add(pane);
         } catch (RuntimeException e) {
             errorHelp(e.getMessage());
         } catch (Exception e){
             errorHelp(e.getMessage());
             System.err.println(e.getMessage());
+        } finally {
+            addNewRecordList("Max campo");
         }
     }
 
@@ -129,26 +159,32 @@ public class HelloController{
             prefLabel.setText("Filtraggio: ");
             prefVBox.getChildren().clear();
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo 1: "));
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
             prefVBox.getChildren().add(creaPaneSpaziatrice());
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo 2: "));
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             TextField t2=creatextField();
             prefVBox.getChildren().add(t2);
             prefVBox.getChildren().add(creaPaneSpaziatrice());
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo 3: "));
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             TextField t3=creatextField();
             prefVBox.getChildren().add(t3);
             prefVBox.getChildren().add(creaPaneSpaziatrice());
-            Button b=creaButton();
+            Button b=creaButton("Filtra");
             b.setOnMouseClicked(e->{
-                //Esecuzione
-                prefVBox.getChildren().clear();
-                prefVBox.getChildren().add(creaLabel(gestoreCsv.filtraCampi(Integer.parseInt(t1.getText()),Integer.parseInt(t2.getText()),Integer.parseInt(t3.getText()))));
-                addNewRecordList("Filtra");
+                try {
+                    //Esecuzione
+                    prefVBox.getChildren().clear();
+                    Label label = new Label(gestoreCsv.filtraCampi(Integer.parseInt(t1.getText()),Integer.parseInt(t2.getText()),Integer.parseInt(t3.getText())));
+                    label.setAlignment(Pos.TOP_LEFT);
+                    label.setPrefWidth(412.0);
+                    label.setWrapText(true);
+                    label.setFont(new Font("Tw Cen MT Condensed Extra Bold", 12.0));
+                    VBox.setVgrow(label, Priority.ALWAYS);
+                    prefVBox.getChildren().add(label);
+                } catch (Exception e1){
+                    errorHelp(e1.getMessage());
+                }
             });
             prefVBox.getChildren().add(b);
         } catch (RuntimeException e) {
@@ -156,8 +192,173 @@ public class HelloController{
         } catch (Exception e){
             errorHelp(e.getMessage());
             System.err.println(e.getMessage());
+        } finally {
+            addNewRecordList("Filtra");
         }
     }
+
+    @FXML
+    public void aggiungiRecord() {
+        try {
+            prefLabel.setText("Inserisci i dettagli del nuovo record:");
+            prefVBox.getChildren().clear();
+
+            // Creazione dei campi di input
+            TextField comuneField = creatextField();
+            TextField provinciaField = creatextField();
+            TextField nomeItalianoField = creatextField();
+            TextField nomeTedescoField = creatextField();
+            TextField proprietaField = creatextField();
+            TextField telefonoField = creatextField();
+            TextField emailField = creatextField();
+            TextField internetField = creatextField();
+            TextField gruppoField = creatextField();
+            TextField altitudineField = creatextField();
+
+            // Aggiunta delle etichette e campi all'interfaccia
+            prefVBox.getChildren().addAll(
+                    creaLabel("Comune:"), comuneField, creaPaneSpaziatrice(),
+                    creaLabel("Provincia:"), provinciaField, creaPaneSpaziatrice(),
+                    creaLabel("Nome Italiano:"), nomeItalianoField, creaPaneSpaziatrice(),
+                    creaLabel("Nome Tedesco:"), nomeTedescoField, creaPaneSpaziatrice(),
+                    creaLabel("Proprietà:"), proprietaField, creaPaneSpaziatrice(),
+                    creaLabel("Telefono:"), telefonoField, creaPaneSpaziatrice(),
+                    creaLabel("Email:"), emailField, creaPaneSpaziatrice(),
+                    creaLabel("Internet:"), internetField, creaPaneSpaziatrice(),
+                    creaLabel("Gruppo:"), gruppoField, creaPaneSpaziatrice(),
+                    creaLabel("Altitudine in metri:"), altitudineField, creaPaneSpaziatrice()
+            );
+
+            Button confermaButton = creaButton("Continua");
+            confermaButton.setText("Aggiungi Record");
+            confermaButton.setOnMouseClicked(e -> {
+                try {
+                    // Creazione del record
+                    String comune = comuneField.getText();
+                    String provincia = provinciaField.getText();
+                    String nomeItaliano = nomeItalianoField.getText();
+                    String nomeTedesco = nomeTedescoField.getText();
+                    String proprieta = proprietaField.getText();
+                    String telefono = telefonoField.getText();
+                    String email = emailField.getText();
+                    String internet = internetField.getText();
+                    String gruppo = gruppoField.getText();
+                    int altitudine = Integer.parseInt(altitudineField.getText());
+
+                    Record nuovoRecord;
+                    if (gestoreCsv.controllaIncrementoCampi()) {
+                        nuovoRecord = new RecordAggiunte(comune, provincia, nomeItaliano, nomeTedesco, proprieta, telefono, email, internet, gruppo, altitudine);
+                    } else {
+                        nuovoRecord = new Record(comune, provincia, nomeItaliano, nomeTedesco, proprieta, telefono, email, internet, gruppo, altitudine);
+                    }
+
+                    gestoreCsv.aggiungiRecord(nuovoRecord);
+                    prefVBox.getChildren().clear();
+                    prefVBox.getChildren().add(creaLabel("Record aggiunto con successo."));
+                } catch (NumberFormatException ex) {
+                    errorHelp("Errore: L'altitudine deve essere un numero intero valido.");
+                } catch (Exception ex) {
+                    errorHelp(ex.getMessage());
+                    System.err.println(ex.getMessage());
+                }
+            });
+
+            prefVBox.getChildren().add(confermaButton);
+        } catch (RuntimeException e) {
+            errorHelp(e.getMessage());
+        } catch (Exception e) {
+            errorHelp(e.getMessage());
+            System.err.println(e.getMessage());
+        } finally {
+            addNewRecordList("Aggiungi");
+        }
+    }
+
+    @FXML
+    public void modificaRecord() {
+        try {
+            prefLabel.setText("Inserisci i dettagli del record da modificare e delle modifiche:");
+            prefVBox.getChildren().clear();
+
+            TextField nomeItalianoVecchioField = creatextField();
+            prefVBox.getChildren().addAll(
+                    creaLabel("Nome Italiano Vecchio:"), nomeItalianoVecchioField, creaPaneSpaziatrice(),
+                    creaLabel("DATI NUOVI |V|")
+            );
+
+            TextField comuneField = creatextField();
+            TextField provinciaField = creatextField();
+            TextField nomeItalianoField = creatextField();
+            TextField nomeTedescoField = creatextField();
+            TextField proprietaField = creatextField();
+            TextField telefonoField = creatextField();
+            TextField emailField = creatextField();
+            TextField internetField = creatextField();
+            TextField gruppoField = creatextField();
+            TextField altitudineField = creatextField();
+
+            prefVBox.getChildren().addAll(
+                    creaLabel("Comune:"), comuneField, creaPaneSpaziatrice(),
+                    creaLabel("Provincia:"), provinciaField, creaPaneSpaziatrice(),
+                    creaLabel("Nome Italiano:"), nomeItalianoField, creaPaneSpaziatrice(),
+                    creaLabel("Nome Tedesco:"), nomeTedescoField, creaPaneSpaziatrice(),
+                    creaLabel("Proprietà:"), proprietaField, creaPaneSpaziatrice(),
+                    creaLabel("Telefono:"), telefonoField, creaPaneSpaziatrice(),
+                    creaLabel("Email:"), emailField, creaPaneSpaziatrice(),
+                    creaLabel("Internet:"), internetField, creaPaneSpaziatrice(),
+                    creaLabel("Gruppo:"), gruppoField, creaPaneSpaziatrice(),
+                    creaLabel("Altitudine in metri:"), altitudineField, creaPaneSpaziatrice()
+            );
+
+            Button confermaButton = creaButton("Continua");
+            confermaButton.setText("Modifica Record");
+            confermaButton.setOnMouseClicked(e -> {
+                try {
+                    Record recordVecchio = new Record("", "", nomeItalianoVecchioField.getText(), "", "", "", "", "", "", 0);
+
+                    String comune = comuneField.getText();
+                    String provincia = provinciaField.getText();
+                    String nomeItaliano = nomeItalianoField.getText();
+                    String nomeTedesco = nomeTedescoField.getText();
+                    String proprieta = proprietaField.getText();
+                    String telefono = telefonoField.getText();
+                    String email = emailField.getText();
+                    String internet = internetField.getText();
+                    String gruppo = gruppoField.getText();
+                    int altitudine = Integer.parseInt(altitudineField.getText());
+
+                    Record nuovoRecord;
+                    if (gestoreCsv.controllaIncrementoCampi()) {
+                        nuovoRecord = new RecordAggiunte(comune, provincia, nomeItaliano, nomeTedesco, proprieta, telefono, email, internet, gruppo, altitudine);
+                    } else {
+                        nuovoRecord = new Record(comune, provincia, nomeItaliano, nomeTedesco, proprieta, telefono, email, internet, gruppo, altitudine);
+                    }
+
+                    if (gestoreCsv.modificaRecord(recordVecchio, nuovoRecord)) {
+                        prefVBox.getChildren().clear();
+                        prefVBox.getChildren().add(creaLabel("Record modificato con successo."));
+                    } else {
+                        prefVBox.getChildren().add(creaLabel("Errore nella modifica."));
+                    }
+                } catch (NumberFormatException ex) {
+                    errorHelp("Errore: L'altitudine deve essere un numero intero valido.");
+                } catch (Exception ex) {
+                    errorHelp(ex.getMessage());
+                    System.err.println(ex.getMessage());
+                }
+            });
+
+            prefVBox.getChildren().add(confermaButton);
+        } catch (RuntimeException e) {
+            errorHelp(e.getMessage());
+        } catch (Exception e) {
+            errorHelp(e.getMessage());
+            System.err.println(e.getMessage());
+        }  finally {
+            addNewRecordList("Modifica");
+        }
+    }
+
 
     @FXML
     public void cerca(){
@@ -166,20 +367,22 @@ public class HelloController{
             prefLabel.setText("Ricerca : ");
             prefVBox.getChildren().clear();
             prefVBox.getChildren().add(creaLabel("Inserire il nome italiano del rifugio: "));
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
             prefVBox.getChildren().add(creaPaneSpaziatrice());
-            Button b=creaButton();
+            Button b=creaButton("Cerca");
             b.setOnMouseClicked(e->{
-                //Esecuzione
-                addNewRecordList("Cerca");
-                prefVBox.getChildren().clear();
-                int posizione = gestoreCsv.cercaRecord(t1.getText().trim());
-                if (posizione != -1)
-                    prefVBox.getChildren().add(creaLabel("Record presente alla riga: "+posizione));
-                else
-                    prefVBox.getChildren().add(creaLabel("Record non presente"));
+                try {
+                    //Esecuzione
+                    prefVBox.getChildren().clear();
+                    int posizione = gestoreCsv.cercaRecord(t1.getText().trim());
+                    if (posizione != -1)
+                        prefVBox.getChildren().add(creaLabel("Record presente alla riga: "+posizione));
+                    else
+                        prefVBox.getChildren().add(creaLabel("Record non presente"));
+                }  catch (Exception e1){
+                    errorHelp(e1.getMessage());
+                }
             });
             prefVBox.getChildren().add(b);
         } catch (RuntimeException e) {
@@ -187,6 +390,8 @@ public class HelloController{
         } catch (Exception e){
             errorHelp(e.getMessage());
             System.err.println(e.getMessage());
+        }  finally {
+            addNewRecordList("Cerca");
         }
     }
     @FXML
@@ -200,15 +405,18 @@ public class HelloController{
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
             prefVBox.getChildren().add(creaPaneSpaziatrice());
-            Button b=creaButton();
+            Button b=creaButton("Cancella");
             b.setOnMouseClicked(e->{
-                //Esecuzione
-                addNewRecordList("Cancella");
-                prefVBox.getChildren().clear();
-                if (gestoreCsv.cancellaRecord(t1.getText().trim()))
-                    prefVBox.getChildren().add(creaLabel("Cancellato!"));
-                else
-                    errorHelp("Errore di cancellazione");
+                try {
+                    //Esecuzione
+                    prefVBox.getChildren().clear();
+                    if (gestoreCsv.cancellaRecord(t1.getText().trim()))
+                        prefVBox.getChildren().add(creaLabel("Cancellato!"));
+                    else
+                        errorHelp("Errore di cancellazione");
+                } catch (Exception e1){
+                    errorHelp(e1.getMessage());
+                }
             });
             prefVBox.getChildren().add(b);
         } catch (RuntimeException e) {
@@ -216,6 +424,8 @@ public class HelloController{
         } catch (Exception e){
             errorHelp(e.getMessage());
             System.err.println(e.getMessage());
+        } finally {
+            addNewRecordList("Cancella");
         }
     }
 
@@ -224,10 +434,17 @@ public class HelloController{
         try {
             prefLabel.setText("Vedi tutti i campi : ");
             prefVBox.getChildren().clear();
-            prefVBox.getChildren().add(creaLabel(gestoreCsv.vediCampi()));
-            addNewRecordList("Vedi campi");
+            Label label = new Label(gestoreCsv.vediCampi());
+            label.setAlignment(Pos.TOP_LEFT);
+            label.setPrefWidth(412.0);
+            label.setWrapText(true);
+            label.setFont(new Font("Tw Cen MT Condensed Extra Bold", 12.0));
+            VBox.setVgrow(label, Priority.ALWAYS);
+            prefVBox.getChildren().add(label);
         } catch (RuntimeException e) {
             errorHelp(e.getMessage());
+        } finally {
+            addNewRecordList("Vedi campi");
         }
     }
 
@@ -237,9 +454,10 @@ public class HelloController{
             prefVBox.getChildren().clear();
             gestoreCsv.spaziamentoFisso();
             prefLabel.setText("Campi spaziati con successo");
-            addNewRecordList("Spazia campi");
         } catch (RuntimeException e) {
             errorHelp(e.getMessage());
+        } finally {
+            addNewRecordList("Spazia campi");
         }
     }
 
@@ -257,19 +475,25 @@ public class HelloController{
     }
 
     @FXML
-    private void errorHelp(String err){
+    private void errorHelp(String err) {
         infoLab.setText(err);
         infoAnch.setVisible(true);
-        entrataAnchor(infoAnch,1300,900);
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } finally {
-            entrataAnchor(infoAnch,900,1300);
-            infoAnch.setVisible(false);
-        }
+        entrataAnchor(infoAnch, 1300, 0);
+
+        // Crea una animazione per il ritardo di 3 secondi
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
+            entrataAnchor(infoAnch, 0, 1300);
+            Timeline timeline1 = new Timeline(new KeyFrame(Duration.seconds(1.5), event1 -> {
+                infoAnch.setVisible(false);
+            }));
+            timeline1.setCycleCount(1);
+            timeline1.play();
+        }));
+
+        timeline.setCycleCount(1); // Esegui solo una volta
+        timeline.play(); // Avvia l'animazione
     }
+
 
     @FXML
     private void addNewRecordList(String msg){
@@ -290,8 +514,8 @@ public class HelloController{
         return label;
     }
 
-    public static Button creaButton() {
-        Button button = new Button("Aggiungi campi");
+    public static Button creaButton(String msg) {
+        Button button = new Button(msg);
         button.setId("b1");
         button.setPrefSize(103.0, 25.0);
         button.setStyle("-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;");

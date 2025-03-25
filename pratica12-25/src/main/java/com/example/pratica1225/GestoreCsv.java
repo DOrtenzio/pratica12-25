@@ -322,7 +322,7 @@ public class GestoreCsv {
                         isIntestazione=false;
                     } else {
                         String[] recordAttuale = next.split(";");
-                        if (Boolean.parseBoolean(recordAttuale[recordAttuale.length - 1]))
+                        if (!Boolean.parseBoolean(recordAttuale[recordAttuale.length - 1]))
                             datiDaMostrare = datiDaMostrare + next + "\n";
                     }
                 }

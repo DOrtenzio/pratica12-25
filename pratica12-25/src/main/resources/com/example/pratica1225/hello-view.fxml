@@ -8,13 +8,24 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="85.0" prefHeight="347.0" prefWidth="462.0" style="-fx-background-color: e6ccb2; -fx-background-radius: 18; -fx-border-radius: 18; -fx-border-color: ede0d4;">
          <children>
-            <Label fx:id="prefLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="434.0" text="Testo" wrapText="true">
+            <Label fx:id="prefLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="434.0" wrapText="true">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="12.0" />
                </font>
             </Label>
-            <VBox fx:id="prefVBox" layoutX="20.0" layoutY="52.0" prefHeight="266.0" prefWidth="422.0" spacing="10.0" style="-fx-background-color: e6ccb2;" />
-         </children></AnchorPane>
+            <ScrollPane fitToWidth="true" layoutX="17.0" layoutY="58.0" prefHeight="251.0" prefWidth="424.0" style="-fx-background-color: #e6ccb2; -fx-border-color: #e6ccb2; -fx-border-width: 0;" vbarPolicy="ALWAYS">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="396.0" style="-fx-background-color: #e6ccb2;">
+                     <children>
+                        <VBox fx:id="prefVBox"  prefWidth="412.0" spacing="10.0" style="-fx-background-color: #e6ccb2;">
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="box3" layoutX="547.0" layoutY="53.0" prefHeight="388.0" prefWidth="353.0" style="-fx-background-color: F4F4F4; -fx-background-radius: 18 0 0 18; -fx-border-radius: 18 0 0 18; -fx-border-color: ede0d4;">
          <children>
             <ScrollPane layoutX="14.0" layoutY="20.0" prefHeight="347.0" prefWidth="327.0" style="-fx-background-color: F4F4F4; -fx-border-color: F4F4F4;">
@@ -28,57 +39,57 @@
          </children></AnchorPane>
       <AnchorPane fx:id="box2" layoutX="-5.0" layoutY="409.0" prefHeight="147.0" prefWidth="549.0" style="-fx-background-color: #b59f8a; -fx-background-radius: 0 48 48 0; -fx-border-radius: 0 48 48 0; -fx-border-color: ede0d4;">
          <children>
-            <Button fx:id="b1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Aggiungi campi">
+            <Button fx:id="b1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#addCampi" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Aggiungi campi">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b2" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Conta campi">
+            <Button fx:id="b2" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#contaCampi" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Conta campi">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b3" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Max record">
+            <Button fx:id="b3" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" onAction="#maxRecord" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Max record">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b4" layoutX="144.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Max campo">
+            <Button fx:id="b4" layoutX="144.0" layoutY="14.0" mnemonicParsing="false" onAction="#maxCampo" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Max campo">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b5" layoutX="144.0" layoutY="62.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Aggiungi record">
+            <Button fx:id="b5" layoutX="144.0" layoutY="62.0" mnemonicParsing="false" onAction="#aggiungiRecord" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Aggiungi record">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b6" layoutX="144.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Filtra">
+            <Button fx:id="b6" layoutX="144.0" layoutY="108.0" mnemonicParsing="false" onAction="#filtraCampi" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Filtra">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b7" layoutX="273.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Cerca">
+            <Button fx:id="b7" layoutX="273.0" layoutY="14.0" mnemonicParsing="false" onAction="#cerca" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Cerca">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b8" layoutX="273.0" layoutY="62.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Modifica">
+            <Button fx:id="b8" layoutX="273.0" layoutY="62.0" mnemonicParsing="false" onAction="#modificaRecord" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Modifica">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b9" layoutX="273.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Cancella">
+            <Button fx:id="b9" layoutX="273.0" layoutY="108.0" mnemonicParsing="false" onAction="#cancella" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Cancella">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b10" layoutX="403.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Vedi tutto">
+            <Button fx:id="b10" layoutX="403.0" layoutY="14.0" mnemonicParsing="false" onAction="#vedi" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Vedi tutto">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="b11" layoutX="403.0" layoutY="62.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Spaziamento">
+            <Button fx:id="b11" layoutX="403.0" layoutY="62.0" mnemonicParsing="false" onAction="#spaziamento" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="Spaziamento">
                <font>
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
@@ -93,11 +104,11 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="infoAnch" layoutX="632.0" layoutY="401.0" prefHeight="79.0" prefWidth="268.0" style="-fx-background-color: e6ccb2; -fx-background-radius: 18; -fx-border-radius: 18; -fx-border-color: ede0d4;" visible="false">
+      <AnchorPane fx:id="infoAnch" layoutX="632.0" layoutY="401.0" prefHeight="79.0" prefWidth="268.0" style="-fx-background-color: red; -fx-background-radius: 18 0 0 18; -fx-border-radius: 18 0 0 18; -fx-border-color: ede0d4;" visible="false">
          <children>
-            <Label fx:id="infoLab" layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="238.0" text="Testo" wrapText="true">
+            <Label fx:id="infoLab" layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="238.0" text="Testo" underline="true" wrapText="true">
                <font>
-                  <Font name="Tw Cen MT Condensed Extra Bold" size="12.0" />
+                  <Font name="Tw Cen MT Condensed Extra Bold" size="20.0" />
                </font>
             </Label>
          </children>
