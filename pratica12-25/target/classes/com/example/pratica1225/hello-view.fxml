@@ -13,24 +13,23 @@
                   <Font name="Tw Cen MT Condensed Extra Bold" size="12.0" />
                </font>
             </Label>
-            <ScrollPane fitToWidth="true" layoutX="17.0" layoutY="58.0" prefHeight="251.0" prefWidth="424.0" style="-fx-background-color: #e6ccb2; -fx-border-color: #e6ccb2; -fx-border-width: 0;" vbarPolicy="ALWAYS">
+            <ScrollPane fitToWidth="true" fitToHeight="true" layoutX="17.0" layoutY="58.0" prefHeight="251.0" prefWidth="424.0" style="-fx-border-color: e6ccb2; -fx-border-width: 0;" vbarPolicy="ALWAYS">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="396.0" style="-fx-background-color: #e6ccb2;">
+                  <AnchorPane minWidth="0.0" prefWidth="396.0" style="-fx-background-color: #e6ccb2;">
                      <children>
-                        <VBox fx:id="prefVBox"  prefWidth="412.0" spacing="10.0" style="-fx-background-color: #e6ccb2;">
+                        <VBox fx:id="prefVBox" prefWidth="412.0" spacing="10.0" style="-fx-background-color: #e6ccb2;">
                         </VBox>
                      </children>
                   </AnchorPane>
                </content>
             </ScrollPane>
-
          </children>
       </AnchorPane>
       <AnchorPane fx:id="box3" layoutX="547.0" layoutY="53.0" prefHeight="388.0" prefWidth="353.0" style="-fx-background-color: F4F4F4; -fx-background-radius: 18 0 0 18; -fx-border-radius: 18 0 0 18; -fx-border-color: ede0d4;">
          <children>
-            <ScrollPane layoutX="14.0" layoutY="20.0" prefHeight="347.0" prefWidth="327.0" style="-fx-background-color: F4F4F4; -fx-border-color: F4F4F4;">
+            <ScrollPane layoutX="14.0" layoutY="20.0" prefHeight="347.0" prefWidth="327.0" style="-fx-background-color:#F4F4F4; -fx-border-color:#F4F4F4;">
                <content>
-                  <VBox fx:id="listVBox" prefHeight="0.0" prefWidth="317.0" spacing="10.0" style="-fx-background-color: white;">
+                  <VBox fx:id="listVBox" prefHeight="0.0" prefWidth="317.0" spacing="10.0" style="-fx-background-color:#F4F4F4;">
                      <children>
                      </children>
                   </VBox>

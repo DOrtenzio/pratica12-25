@@ -126,7 +126,6 @@ public class HelloController{
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo: "));
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             Button b=creaButton("Continua");
             b.setOnMouseClicked(e->{
                 try {
@@ -161,15 +160,12 @@ public class HelloController{
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo 1: "));
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo 2: "));
             TextField t2=creatextField();
             prefVBox.getChildren().add(t2);
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             prefVBox.getChildren().add(creaLabel("Inserire il numero del campo 3: "));
             TextField t3=creatextField();
             prefVBox.getChildren().add(t3);
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             Button b=creaButton("Filtra");
             b.setOnMouseClicked(e->{
                 try {
@@ -217,16 +213,16 @@ public class HelloController{
 
             // Aggiunta delle etichette e campi all'interfaccia
             prefVBox.getChildren().addAll(
-                    creaLabel("Comune:"), comuneField, creaPaneSpaziatrice(),
-                    creaLabel("Provincia:"), provinciaField, creaPaneSpaziatrice(),
-                    creaLabel("Nome Italiano:"), nomeItalianoField, creaPaneSpaziatrice(),
-                    creaLabel("Nome Tedesco:"), nomeTedescoField, creaPaneSpaziatrice(),
-                    creaLabel("Proprietà:"), proprietaField, creaPaneSpaziatrice(),
-                    creaLabel("Telefono:"), telefonoField, creaPaneSpaziatrice(),
-                    creaLabel("Email:"), emailField, creaPaneSpaziatrice(),
-                    creaLabel("Internet:"), internetField, creaPaneSpaziatrice(),
-                    creaLabel("Gruppo:"), gruppoField, creaPaneSpaziatrice(),
-                    creaLabel("Altitudine in metri:"), altitudineField, creaPaneSpaziatrice()
+                    creaLabel("Comune:"), comuneField,
+                    creaLabel("Provincia:"), provinciaField,
+                    creaLabel("Nome Italiano:"), nomeItalianoField,
+                    creaLabel("Nome Tedesco:"), nomeTedescoField,
+                    creaLabel("Proprietà:"), proprietaField,
+                    creaLabel("Telefono:"), telefonoField,
+                    creaLabel("Email:"), emailField,
+                    creaLabel("Internet:"), internetField,
+                    creaLabel("Gruppo:"), gruppoField,
+                    creaLabel("Altitudine in metri:"), altitudineField
             );
 
             Button confermaButton = creaButton("Continua");
@@ -282,7 +278,7 @@ public class HelloController{
 
             TextField nomeItalianoVecchioField = creatextField();
             prefVBox.getChildren().addAll(
-                    creaLabel("Nome Italiano Vecchio:"), nomeItalianoVecchioField, creaPaneSpaziatrice(),
+                    creaLabel("Nome Italiano Vecchio:"), nomeItalianoVecchioField,
                     creaLabel("DATI NUOVI |V|")
             );
 
@@ -298,16 +294,16 @@ public class HelloController{
             TextField altitudineField = creatextField();
 
             prefVBox.getChildren().addAll(
-                    creaLabel("Comune:"), comuneField, creaPaneSpaziatrice(),
-                    creaLabel("Provincia:"), provinciaField, creaPaneSpaziatrice(),
-                    creaLabel("Nome Italiano:"), nomeItalianoField, creaPaneSpaziatrice(),
-                    creaLabel("Nome Tedesco:"), nomeTedescoField, creaPaneSpaziatrice(),
-                    creaLabel("Proprietà:"), proprietaField, creaPaneSpaziatrice(),
-                    creaLabel("Telefono:"), telefonoField, creaPaneSpaziatrice(),
-                    creaLabel("Email:"), emailField, creaPaneSpaziatrice(),
-                    creaLabel("Internet:"), internetField, creaPaneSpaziatrice(),
-                    creaLabel("Gruppo:"), gruppoField, creaPaneSpaziatrice(),
-                    creaLabel("Altitudine in metri:"), altitudineField, creaPaneSpaziatrice()
+                    creaLabel("Comune:"), comuneField,
+                    creaLabel("Provincia:"), provinciaField,
+                    creaLabel("Nome Italiano:"), nomeItalianoField,
+                    creaLabel("Nome Tedesco:"), nomeTedescoField,
+                    creaLabel("Proprietà:"), proprietaField,
+                    creaLabel("Telefono:"), telefonoField,
+                    creaLabel("Email:"), emailField,
+                    creaLabel("Internet:"), internetField,
+                    creaLabel("Gruppo:"), gruppoField,
+                    creaLabel("Altitudine in metri:"), altitudineField
             );
 
             Button confermaButton = creaButton("Continua");
@@ -369,7 +365,6 @@ public class HelloController{
             prefVBox.getChildren().add(creaLabel("Inserire il nome italiano del rifugio: "));
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             Button b=creaButton("Cerca");
             b.setOnMouseClicked(e->{
                 try {
@@ -401,10 +396,8 @@ public class HelloController{
             prefLabel.setText("Cancella : ");
             prefVBox.getChildren().clear();
             prefVBox.getChildren().add(creaLabel("Inserire il nome italiano del rifugio: "));
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             TextField t1=creatextField();
             prefVBox.getChildren().add(t1);
-            prefVBox.getChildren().add(creaPaneSpaziatrice());
             Button b=creaButton("Cancella");
             b.setOnMouseClicked(e->{
                 try {
@@ -515,7 +508,7 @@ public class HelloController{
         return label;
     }
 
-    public static Button creaButton(String msg) {
+    private Button creaButton(String msg) {
         Button button = new Button(msg);
         button.setId("b1");
         button.setPrefSize(103.0, 25.0);
@@ -525,18 +518,10 @@ public class HelloController{
         return button;
     }
 
-    public static TextField creatextField() {
+    private TextField creatextField() {
         TextField textField = new TextField();
         textField.setStyle("-fx-background-color: e6ccb2; -fx-border-color: #b59f8a;");
-
+        textField.setPrefSize(300.0, 25.0);
         return textField;
-    }
-
-    public static Pane creaPaneSpaziatrice() {
-        Pane pane = new Pane();
-        pane.setStyle("-fx-background-color: e6ccb2;");
-        pane.setPrefHeight(25.0);
-
-        return pane;
     }
 }
