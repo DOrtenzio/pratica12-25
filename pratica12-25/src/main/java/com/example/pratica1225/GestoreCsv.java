@@ -163,14 +163,12 @@ public class GestoreCsv {
 
     //Aggiungere un record in coda;
     public void aggiungiRecord (Record record) throws RuntimeException{
-        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare))){
+        try (PrintWriter writerNuovo = new PrintWriter(new FileWriter(this.fileAnalizzare, true))){
             if (controllaIncrementoCampi() && !(record instanceof RecordAggiunte))
                 throw new RuntimeException("Record inserito non corretto");
             else {
-                PrintWriter writerNuovo = new PrintWriter(new FileWriter(this.fileAnalizzare, true));
                 writerNuovo.println(record.toString());
                 writerNuovo.flush();
-                writerNuovo.close();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -322,7 +320,7 @@ public class GestoreCsv {
                         isIntestazione=false;
                     } else {
                         String[] recordAttuale = next.split(";");
-                        if (!Boolean.parseBoolean(recordAttuale[recordAttuale.length - 1]))
+                        if (Boolean.parseBoolean(recordAttuale[recordAttuale.length-1].trim()))
                             datiDaMostrare = datiDaMostrare + next + "\n";
                     }
                 }

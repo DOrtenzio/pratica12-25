@@ -434,6 +434,7 @@ public class HelloController{
         try {
             prefLabel.setText("Vedi tutti i campi : ");
             prefVBox.getChildren().clear();
+
             Label label = new Label(gestoreCsv.vediCampi());
             label.setAlignment(Pos.TOP_LEFT);
             label.setPrefWidth(412.0);
