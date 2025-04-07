@@ -1,4 +1,5 @@
 # Progetto: Elaborazione Dati CSV con JavaFX
+![image](https://github.com/user-attachments/assets/927d1f05-fed8-49ab-8703-2550ae9da0fd)
 
 ## Indice
 1. [Fase di Preparazione](#1-fase-di-preparazione)
