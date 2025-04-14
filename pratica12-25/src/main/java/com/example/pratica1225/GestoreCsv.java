@@ -352,7 +352,7 @@ public class GestoreCsv {
                     "}\n"+
                     "</style>\n" +
                     "</head>\n<body>\n<h1>Tabella dei valori contenuti</h1>\n<h6>A seguire si ritrova il contenuto del file csv.</h6>\n");
-            writer.print("<table>\n<tr>\n");
+            writer.print("<table style=\"border: 1px solid #FF0000;\">\n<tr>\n");
             //Intestazione
             String intestazione=reader.readLine();
             for (String campoIntestazione : intestazione.split(";")) writer.println("<th>"+campoIntestazione.trim()+"</th>");
