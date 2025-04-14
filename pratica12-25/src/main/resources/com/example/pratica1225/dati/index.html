@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<title>CSV VISUALIZZATO</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    justify-content: center;
+}
+</style>
+</head>
+<body>
+<h1>Tabella dei valori contenuti</h1>
+<h6>A seguire si ritrova il contenuto del file csv.</h6>
+<table>
+<tr>
+<th>Comune</th>
+<th>Provincia</th>
+<th>Nome italiano rifugio</th>
+<th>Nome tedesco rifugio</th>
+<th>Altitudine in metri</th>
+<th>Propriet�</th>
+<th>Telefono</th>
+<th>E-Mail</th>
+<th>Internet</th>
+<th>Gruppo</th>
+<th>mio_parametro</th>
+<th>cancellazione_logica</th>
+</tr>
+<tr>
+<td>AVELENGO</td>
+<td>BOLZANO</td>
+<td>Merano</td>
+<td>Meraner-H�tte</td>
+<td>1940</td>
+<td>AVS</td>
+<td>0473-279405</td>
+<td>info@meranerhuette.it</td>
+<td>www.meranerhuette.it</td>
+<td>Monti Sarentini</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BADIA</td>
+<td>BOLZANO</td>
+<td>Gardenaccia</td>
+<td>Gardenazza-H�tte</td>
+<td>2045</td>
+<td>Privato</td>
+<td>0471-840128</td>
+<td>info@gardenacia.it</td>
+<td>www.gardenacia.it</td>
+<td>Odle - Puez - Sella</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BADIA</td>
+<td>BOLZANO</td>
+<td>Santa Croce</td>
+<td>Heilgkreuz</td>
+<td>2045</td>
+<td>Privato</td>
+<td>0471-839632</td>
+<td>s.croce@rolmail.net</td>
+<td>www.lacrusc.com</td>
+<td>Fanes - Sennes</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BADIA</td>
+<td>BOLZANO</td>
+<td>Scotoni</td>
+<td>Scotoni-H�tte</td>
+<td>1985</td>
+<td>Privato</td>
+<td>0471-847330</td>
+<td>info@scotoni.it</td>
+<td>www.scotoni.it</td>
+<td>Fanes - Sennes</td>
+<td>17</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BARBIANO</td>
+<td>BOLZANO</td>
+<td>Corno Renon</td>
+<td>Rittner-Horn-Haus</td>
+<td>2259</td>
+<td>C.A.I.</td>
+<td>0471-356207</td>
+<td></td>
+<td></td>
+<td>Monti Sarentini</td>
+<td>13</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRAIES</td>
+<td>BOLZANO</td>
+<td>Vallandro</td>
+<td>D�rrensteinh�tte</td>
+<td>2040</td>
+<td>Privato</td>
+<td>0474-972505</td>
+<td>info@vallandro.it</td>
+<td>www.vallandro.it</td>
+<td>Fanes - Sennes</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRENNERO</td>
+<td>BOLZANO</td>
+<td>Calciati al Tribulaun</td>
+<td>Tribulaun-H�tte</td>
+<td>2368</td>
+<td>C.A.I.</td>
+<td>0472-632470</td>
+<td>info@tribulaunhuette.com</td>
+<td>www.tribulaunhuette.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRENNERO</td>
+<td>BOLZANO</td>
+<td>Cima Gallina</td>
+<td>H�hnerspiel-H�tte</td>
+<td>1868</td>
+<td>Privato</td>
+<td>335-5666181</td>
+<td>info@huehnerspielhuette</td>
+<td>www.huehnerspielhuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRENNERO</td>
+<td>BOLZANO</td>
+<td>Cremona alla Stua</td>
+<td>Magdeburger-H�tte</td>
+<td>2423</td>
+<td>C.A.I.</td>
+<td>0472-632472</td>
+<td></td>
+<td>www.13rifugi.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRENNERO</td>
+<td>BOLZANO</td>
+<td>Genziana</td>
+<td>Enzian-H�tte</td>
+<td>1894</td>
+<td>Privato</td>
+<td>0472-631224</td>
+<td></td>
+<td></td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRESSANONE</td>
+<td>BOLZANO</td>
+<td>Plose</td>
+<td>Plose-H�tte</td>
+<td>2446</td>
+<td>C.A.I.</td>
+<td>0472-521333</td>
+<td>plosehuette@dnet.it</td>
+<td>www.plosehuette.com</td>
+<td>Odle - Puez - Sella</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>BRESSANONE</td>
+<td>BOLZANO</td>
+<td>Schatzer</td>
+<td>Schatzer-H�tte</td>
+<td>2004</td>
+<td>Privato</td>
+<td>0472-521343</td>
+<td></td>
+<td>www.schatzerhuette.com</td>
+<td>Odle - Puez - Sella</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CAMPO DI TRENS</td>
+<td>BOLZANO</td>
+<td>Simile Mahd</td>
+<td>Simile-Mahd-Alm-H�tte</td>
+<td>2011</td>
+<td>Privato</td>
+<td>0472-647162</td>
+<td></td>
+<td></td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CAMPO TURES</td>
+<td>BOLZANO</td>
+<td>Roma</td>
+<td>Kasseler-H�tte</td>
+<td>2276</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0474-672550</td>
+<td>info@kasseler-huette.com</td>
+<td>www.kasseler-huette.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CASTELROTTO</td>
+<td>BOLZANO</td>
+<td>Bullaccia</td>
+<td>Puflatsch-H�tte</td>
+<td>1950</td>
+<td>Privato</td>
+<td>0471-729090</td>
+<td>info@dibaita-puflatschhuette.com</td>
+<td>www.dibaita-puflatschhuette.com</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CASTELROTTO</td>
+<td>BOLZANO</td>
+<td>Mahlknecht</td>
+<td>Mahlknecht-H�tte</td>
+<td>2054</td>
+<td>Privato</td>
+<td>0471-727912</td>
+<td>info@mahlknechthuette.com</td>
+<td>www.mahlknechthuette.com</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CASTELROTTO</td>
+<td>BOLZANO</td>
+<td>Schlernb�dele</td>
+<td>Schlernb�dele-H�tte</td>
+<td>1700</td>
+<td>AVS</td>
+<td>0471-705345</td>
+<td></td>
+<td>www.schlernboedelehuette.it</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CHIUSA</td>
+<td>BOLZANO</td>
+<td>Chiusa</td>
+<td>Klausner-H�tte</td>
+<td>1923</td>
+<td>C.A.I.</td>
+<td>0472-545194</td>
+<td>ramoser.robert@gmail.com</td>
+<td>www.klausnerhuette.it</td>
+<td>Monti Sarentini</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CHIUSA</td>
+<td>BOLZANO</td>
+<td>Santa Croce</td>
+<td>Latzfonser-Kreuz-H�tte</td>
+<td>2302</td>
+<td>Privato</td>
+<td>0472-545017</td>
+<td>info@latzfonserkreuz.com</td>
+<td>www.latzfonserkreuz.com</td>
+<td>Monti Sarentini</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CORVARA IN BADIA</td>
+<td>BOLZANO</td>
+<td>Cavazza al Pisciad�</td>
+<td>Pisciad�-H�tte</td>
+<td>2585</td>
+<td>C.A.I.</td>
+<td>0471-836292</td>
+<td></td>
+<td></td>
+<td>Odle - Puez - Sella</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CORVARA IN BADIA</td>
+<td>BOLZANO</td>
+<td>Cr�p de Munt</td>
+<td>Cr�p-de-Munt-H�tte</td>
+<td>1959</td>
+<td>Privato</td>
+<td>349-0842885</td>
+<td>info@crepdemunt</td>
+<td>www.crepdemunt.it</td>
+<td>Odle - Puez - Sella</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CORVARA IN BADIA</td>
+<td>BOLZANO</td>
+<td>Franz Kostner al Vallon</td>
+<td>Franz-Kostner-H�tte</td>
+<td>2550</td>
+<td>C.A.I.</td>
+<td>333-8759838</td>
+<td>info@rifugiokostner.it</td>
+<td>www.rifugiokostner.it</td>
+<td>Odle - Puez - Sella</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CORVARA IN BADIA</td>
+<td>BOLZANO</td>
+<td>Puez</td>
+<td>Puez-H�tte</td>
+<td>2475</td>
+<td>C.A.I.</td>
+<td>0471-795365</td>
+<td>info@rifugiopuez.it</td>
+<td>www.rifugiopuez.it</td>
+<td>Odle - Puez - Sella</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>CURON VENOSTA</td>
+<td>BOLZANO</td>
+<td>Pio XI</td>
+<td>Wei�kugel-H�tte</td>
+<td>2542</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-633191</td>
+<td>info@weisskugel.it</td>
+<td>www.weisskugel.it</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>17</td>
+<td>true</td>
+</tr>
+<tr>
+<td>DOBBIACO</td>
+<td>BOLZANO</td>
+<td>A. Locatelli - S. Innerkofler</td>
+<td>Drei-Zinnen-H�tte</td>
+<td>2405</td>
+<td>C.A.I.</td>
+<td>0474-972002</td>
+<td>dreizinnenhuette@rolmail.net</td>
+<td>www.dreizinnenhuette.com</td>
+<td>Dolomiti di Sesto</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>DOBBIACO</td>
+<td>BOLZANO</td>
+<td>Bonner</td>
+<td>Bonnerh�tte</td>
+<td>2340</td>
+<td>Comune Dobbiaco</td>
+<td>340-9428264</td>
+<td>info@bonnerhuette.it</td>
+<td>www.bonnerhuette.it</td>
+<td>Dolomiti di Sesto</td>
+<td>16</td>
+<td>true</td>
+</tr>
+<tr>
+<td>FIE' ALLO SCILIAR</td>
+<td>BOLZANO</td>
+<td>Bolzano al Monte Pez</td>
+<td>Schlernhaus</td>
+<td>2450</td>
+<td>C.A.I.</td>
+<td>0471-612024</td>
+<td>info@schlernhaus.it</td>
+<td>www.schlernhaus.it</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>FORTEZZA</td>
+<td>BOLZANO</td>
+<td>Puntleider-Alm-H�tte</td>
+<td>Malga Pontelletto</td>
+<td>1777</td>
+<td>Privato</td>
+<td>349-6442391</td>
+<td></td>
+<td></td>
+<td>Monti Sarentini</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>FUNES</td>
+<td>BOLZANO</td>
+<td>Genova</td>
+<td>Schl�ter-H�tte</td>
+<td>2297</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0472-840132</td>
+<td>info@schlueterhuette.com</td>
+<td>www.schlueterhuette.com</td>
+<td>Odle - Puez - Sella</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>FUNES</td>
+<td>BOLZANO</td>
+<td>Malga Brogles</td>
+<td>Brogles-H�tte</td>
+<td>2045</td>
+<td>Privato</td>
+<td>0471-655642</td>
+<td></td>
+<td></td>
+<td>Odle - Puez - Sella</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>LUSON</td>
+<td>BOLZANO</td>
+<td>Prato Croce</td>
+<td>Kreuzwiese-H�tte</td>
+<td>1924</td>
+<td>Privato</td>
+<td>0472-413714</td>
+<td>info@kreuzwiesenalm.com</td>
+<td>www.kreuzwiesenalm.com</td>
+<td>Odle - Puez - Sella</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MALLES VENOSTA</td>
+<td>BOLZANO</td>
+<td>Oberettes</td>
+<td>Oberettes-H�tte</td>
+<td>2670</td>
+<td>AVS</td>
+<td>0473-830280</td>
+<td>info@oberettes.it</td>
+<td>www.oberettes.it</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MALLES VENOSTA</td>
+<td>BOLZANO</td>
+<td>Sesvenna</td>
+<td>Sesvenna-H�tte</td>
+<td>2256</td>
+<td>AVS</td>
+<td>0473-830234</td>
+<td>info@sesvenna.it</td>
+<td>www.sesvenna.it</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MAREBBE</td>
+<td>BOLZANO</td>
+<td>Fanes</td>
+<td>Fanes-H�tte</td>
+<td>2060</td>
+<td>Privato</td>
+<td>0474-501097</td>
+<td>info@rifugiofanes.com</td>
+<td>www.rifugiofanes.com</td>
+<td>Fanes - Sennes</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MAREBBE</td>
+<td>BOLZANO</td>
+<td>Fodara Vedla</td>
+<td>Fodara-Vedla-H�tte</td>
+<td>1965</td>
+<td>Privato</td>
+<td>0474-501093</td>
+<td>rifugio@fodara.it</td>
+<td>www.fodara.it</td>
+<td>Fanes - Sennes</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MAREBBE</td>
+<td>BOLZANO</td>
+<td>Lavarella</td>
+<td>La-Varella-H�tte</td>
+<td>2042</td>
+<td>Privato</td>
+<td>0474-501079</td>
+<td>rifugio@lavarella.it</td>
+<td>www.lavarella.it</td>
+<td>Fanes - Sennes</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MAREBBE</td>
+<td>BOLZANO</td>
+<td>Munt de Sennes</td>
+<td>Munt de Sennes</td>
+<td>2200</td>
+<td>Privato</td>
+<td>0474-501311</td>
+<td>info@muntdesennes.com</td>
+<td>www.muntdesennes.com</td>
+<td>Fanes - Sennes</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MAREBBE</td>
+<td>BOLZANO</td>
+<td>Sennes</td>
+<td>Sennes-H�tte</td>
+<td>2176</td>
+<td>Privato</td>
+<td>0474-501092</td>
+<td>info@sennes.com</td>
+<td>www.sennes.com</td>
+<td>Fanes - Sennes</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MARTELLO</td>
+<td>BOLZANO</td>
+<td>Lifi Alm</td>
+<td>Lifi-Alm-H�tte</td>
+<td>2165</td>
+<td>Comune di Martello</td>
+<td>0473-744708</td>
+<td>info@lyfialm.it</td>
+<td>www.lyfialm.it</td>
+<td>Ortles - Mendola</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MARTELLO</td>
+<td>BOLZANO</td>
+<td>Martello</td>
+<td>Marteller-H�tte</td>
+<td>2610</td>
+<td>AVS</td>
+<td>0473-744790</td>
+<td>info@martellerhuette.com</td>
+<td>www.martellerhuette.com</td>
+<td>Ortles - Mendola</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MARTELLO</td>
+<td>BOLZANO</td>
+<td>Nino Corsi</td>
+<td>Zufall-H�tte</td>
+<td>2265</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-744785</td>
+<td>info@zufallhuette.com</td>
+<td>www.zufallhuette.com</td>
+<td>Ortles - Mendola</td>
+<td>13</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MOSO IN PASSIRIA</td>
+<td>BOLZANO</td>
+<td>Hochalm</td>
+<td>Hochalm-H�tte</td>
+<td>2174</td>
+<td>Privato</td>
+<td>348-4110362</td>
+<td>f.gufler@gmx.net</td>
+<td>www.13rifugi.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MOSO IN PASSIRIA</td>
+<td>BOLZANO</td>
+<td>Monteneve</td>
+<td>Schneeberg-H�tte</td>
+<td>2355</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-647045</td>
+<td>info@schneeberg.org</td>
+<td>www.monteneve.org</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MOSO IN PASSIRIA</td>
+<td>BOLZANO</td>
+<td>Petrarca all'Altissima</td>
+<td>Stettiner-H�tte</td>
+<td>2875</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-646789</td>
+<td>stettiner@13h.de</td>
+<td>www.13rifugi.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>MOSO IN PASSIRIA</td>
+<td>BOLZANO</td>
+<td>Plan</td>
+<td>Zwickauer-H�tte</td>
+<td>2979</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-646002</td>
+<td>zwickauerhuette@13h.de</td>
+<td>www.13rifugi.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>16</td>
+<td>true</td>
+</tr>
+<tr>
+<td>ORTISEI</td>
+<td>BOLZANO</td>
+<td>Rasciesa</td>
+<td>Rasch�tz-H�tte</td>
+<td>2170</td>
+<td>Comune Ortisei</td>
+<td>333-3380868</td>
+<td>info@rifugioresciesa.com</td>
+<td>www.rifugioresciesa.com</td>
+<td>Odle - Puez - Sella</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>PARCINES</td>
+<td>BOLZANO</td>
+<td>Cima Fiammante</td>
+<td>Lodner-H�tte</td>
+<td>2262</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-967367</td>
+<td></td>
+<td></td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>16</td>
+<td>true</td>
+</tr>
+<tr>
+<td>PARCINES</td>
+<td>BOLZANO</td>
+<td>Hochgang</td>
+<td>Hochganghaus</td>
+<td>1834</td>
+<td>Privato</td>
+<td>0473-443310</td>
+<td>erlacher@hochganghaus.it</td>
+<td>www.hochganghaus.it</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>PARCINES</td>
+<td>BOLZANO</td>
+<td>Nassereto</td>
+<td>Nassereith-H�tte</td>
+<td>1523</td>
+<td>Interessenza Ziel-Alm</td>
+<td>0473-968222 340-4941347</td>
+<td>info@nasereit.com</td>
+<td>www.nasereit.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>PREDOI</td>
+<td>BOLZANO</td>
+<td>Brigata Tridentina</td>
+<td>Birnl�cken-H�tte</td>
+<td>2441</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0474-654140</td>
+<td>info@pension-knappenhof.com</td>
+<td>www.pension-knappenhof.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>PREDOI</td>
+<td>BOLZANO</td>
+<td>Giogo Lungo</td>
+<td>Lenkj�chl-H�tte</td>
+<td>2590</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0474-654144</td>
+<td>info@lenkl.com</td>
+<td>www.lenkl.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RACINES</td>
+<td>BOLZANO</td>
+<td>Cima Libera</td>
+<td>M�ller-H�tte</td>
+<td>3148</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0472-647373 329-2346943</td>
+<td>info@muellerhuette.eu</td>
+<td>www.muellerhuette.eu</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RACINES</td>
+<td>BOLZANO</td>
+<td>G. Biasi al Bicchiere</td>
+<td>Becherhaus</td>
+<td>3190</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0472-656377</td>
+<td>e.pichler@becherhaus.com</td>
+<td>www.becherhaus.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>13</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RACINES</td>
+<td>BOLZANO</td>
+<td>Vedretta Pendente</td>
+<td>Teplitzer-H�tte</td>
+<td>2586</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>338-1358371</td>
+<td>info@teplitzerhuette.com</td>
+<td>www.teplitzerhuette.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RACINES</td>
+<td>BOLZANO</td>
+<td>Vedretta Piana</td>
+<td>Grohmann-H�tte</td>
+<td>2254</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>348-2400286</td>
+<td></td>
+<td></td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>13</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RASUN ANTERSELVA</td>
+<td>BOLZANO</td>
+<td>Vedretta di Ries</td>
+<td>Rieserferner-H�tte</td>
+<td>2792</td>
+<td>AVS</td>
+<td>0474-492125</td>
+<td>info@rieserfernerhuette.it</td>
+<td>www.rieserfernerhuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RIO DI PUSTERIA</td>
+<td>BOLZANO</td>
+<td>Bressanone</td>
+<td>Brixner-H�tte</td>
+<td>2300</td>
+<td>AVS</td>
+<td>0472-547131</td>
+<td>info@brixnerhuette.it</td>
+<td>www.brixnerhuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>RIO DI PUSTERIA</td>
+<td>BOLZANO</td>
+<td>Wieser</td>
+<td>Wieser-H�tte</td>
+<td>1833</td>
+<td>Privato</td>
+<td>0472-520350</td>
+<td>info@schutzhaus-wieserhuette.com</td>
+<td>www.schutzhaus-wieserhuette.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SAN MARTINO IN BADIA</td>
+<td>BOLZANO</td>
+<td>Montemuro</td>
+<td>Maurerberg-H�tte</td>
+<td>2130</td>
+<td>Privato</td>
+<td>0474-520059</td>
+<td>info@maurerberg.it</td>
+<td>www.maurerberg.it</td>
+<td>Odle - Puez - Sella</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SANTA CRISTINA VALGARDENA</td>
+<td>BOLZANO</td>
+<td>Firenze</td>
+<td>Regensburger-H�tte</td>
+<td>2037</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0471-796307</td>
+<td>info@rifugiofirenze.com</td>
+<td>www.rifugiofirenze.com</td>
+<td>Odle - Puez - Sella</td>
+<td>13</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SANTA CRISTINA VALGARDENA</td>
+<td>BOLZANO</td>
+<td>Vicenza al Sasso Lungo</td>
+<td>Langkofelh�tte</td>
+<td>2253</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0471-792323</td>
+<td></td>
+<td></td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SARENTINO</td>
+<td>BOLZANO</td>
+<td>Kesselberg</td>
+<td>Kesselberg-H�tte</td>
+<td>2300</td>
+<td>Privato</td>
+<td>0473-279477</td>
+<td></td>
+<td></td>
+<td>Monti Sarentini</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SCENA</td>
+<td>BOLZANO</td>
+<td>Malga Hinteregg</td>
+<td>Hintereggalm</td>
+<td>1974</td>
+<td>Privato</td>
+<td>339-6252609</td>
+<td>info@hintereggalm.eu</td>
+<td>www.hintereggalm.eu</td>
+<td>Monti Sarentini</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SCENA</td>
+<td>BOLZANO</td>
+<td>Picco Ivigna</td>
+<td>Ifinger-H�tte</td>
+<td>1815</td>
+<td>C.A.I.</td>
+<td>0473-965111</td>
+<td></td>
+<td></td>
+<td>Monti Sarentini</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SELVA DEI MOLINI</td>
+<td>BOLZANO</td>
+<td>Giovanni Porro</td>
+<td>Chemnitzer-H�tte</td>
+<td>2420</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0474-653244</td>
+<td>info@chemnitzerhuette.com</td>
+<td>www.chemnitzerhuette.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>17</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SELVA DEI MOLINI</td>
+<td>BOLZANO</td>
+<td>Ponte di Ghiaccio</td>
+<td>Edelraut-H�tte</td>
+<td>2545</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0474-653230</td>
+<td>info@edelrauthuette.it</td>
+<td>www.edelrauthuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SELVA DI VAL GARDENA</td>
+<td>BOLZANO</td>
+<td>Juac</td>
+<td>Juac-H�tte</td>
+<td>1905</td>
+<td>Privato</td>
+<td>335-8082321</td>
+<td>info@juac.it</td>
+<td>www.juac.it</td>
+<td>Odle - Puez - Sella</td>
+<td>16</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SELVA DI VAL GARDENA</td>
+<td>BOLZANO</td>
+<td>Toni Demetz</td>
+<td>Toni-Demetz-H�tte</td>
+<td>2685</td>
+<td>Privato</td>
+<td>0471-795050 335-6586796</td>
+<td>info@tonidemetz.it</td>
+<td>www.tonidemetz.it</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SENALES</td>
+<td>BOLZANO</td>
+<td>Bella Vista</td>
+<td>Sch�ne-Aussicht-H�tte</td>
+<td>2842</td>
+<td>Privato</td>
+<td>0473-662140</td>
+<td>info@schoeneaussicht.it</td>
+<td>www.schoeneaussicht.it</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SENALES</td>
+<td>BOLZANO</td>
+<td>Similaun</td>
+<td>Similaun-H�tte</td>
+<td>3018</td>
+<td>Privato</td>
+<td>0473-669711</td>
+<td>info@vent-hotel-post.com</td>
+<td>www.vent-hotel-post.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SESTO</td>
+<td>BOLZANO</td>
+<td>Pian di Cengia</td>
+<td>B�llelejoch-H�tte</td>
+<td>2528</td>
+<td>Privato</td>
+<td>337-451517</td>
+<td>info@rogger.info</td>
+<td>www.rogger.info</td>
+<td>Dolomiti di Sesto</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>SESTO</td>
+<td>BOLZANO</td>
+<td>Zsigmondy-Comici</td>
+<td>Zsigmondy-Comici-H�tte</td>
+<td>2224</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0474-710358</td>
+<td>info@zsigmondyhuette.com</td>
+<td>www.zsigmondyhuette.com</td>
+<td>Dolomiti di Sesto</td>
+<td>11</td>
+<td>true</td>
+</tr>
+<tr>
+<td>STELVIO</td>
+<td>BOLZANO</td>
+<td>Aldo e Vanni Borletti</td>
+<td>Bergl-H�tte</td>
+<td>2188</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td></td>
+<td></td>
+<td>www.berglhuette.it</td>
+<td>Ortles - Mendola</td>
+<td>16</td>
+<td>true</td>
+</tr>
+<tr>
+<td>STELVIO</td>
+<td>BOLZANO</td>
+<td>Citt� di Milano</td>
+<td>Schaubach-H�tte</td>
+<td>2581</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-613002</td>
+<td>info@schaubachhuette.it</td>
+<td>www.schaubachhuette.it</td>
+<td>Ortles - Mendola</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>STELVIO</td>
+<td>BOLZANO</td>
+<td>Coston</td>
+<td>Hintergrat-H�tte</td>
+<td>2661</td>
+<td>Privato</td>
+<td>0473-613188</td>
+<td>info@hintergrathuette.com</td>
+<td>www.hintergrathuette.com</td>
+<td>Ortles - Mendola</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>STELVIO</td>
+<td>BOLZANO</td>
+<td>Julius Payer</td>
+<td>Payer-H�tte</td>
+<td>3020</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-613010</td>
+<td></td>
+<td>www.payerhuette.com</td>
+<td>Ortles - Mendola</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>STELVIO</td>
+<td>BOLZANO</td>
+<td>Serristori</td>
+<td>D�sselldorfer-H�tte</td>
+<td>2721</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0473-613115</td>
+<td>info@duesseldorferhuette.com</td>
+<td>www.duesseldorferhuette.com</td>
+<td>Ortles - Mendola</td>
+<td>13</td>
+<td>true</td>
+</tr>
+<tr>
+<td>STELVIO</td>
+<td>BOLZANO</td>
+<td>Tabaretta</td>
+<td>Tabaretta-H�tte</td>
+<td>2556</td>
+<td>Privato</td>
+<td>347-2614872</td>
+<td>info@tabaretta.com</td>
+<td>www.tabaretta.com</td>
+<td>Ortles - Mendola</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TERENTO</td>
+<td>BOLZANO</td>
+<td>Lago della Pausa</td>
+<td>Tiefrasten-H�tte</td>
+<td>2312</td>
+<td>AVS</td>
+<td>0474-554999</td>
+<td>info@tiefrastenhuette.it</td>
+<td>www.tiefrastenhuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TERMENO SULLA STRADA DEL VINO</td>
+<td>BOLZANO</td>
+<td>Oltradige al Roen</td>
+<td>�beretscher-H�tte</td>
+<td>1973</td>
+<td>C.A.I.</td>
+<td>0471-812031</td>
+<td>info@rifugioroen.it</td>
+<td>www.rifugioroen.it</td>
+<td>Ortles - Mendola</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIRES</td>
+<td>BOLZANO</td>
+<td>Alpe di Tires</td>
+<td>Tierser Alpl</td>
+<td>2440</td>
+<td>Privato</td>
+<td>0471-727958</td>
+<td>info@tierseralpl.com</td>
+<td>www.tierseralpl.com</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIRES</td>
+<td>BOLZANO</td>
+<td>Bergamo</td>
+<td>Grasleiten-H�tte</td>
+<td>2134</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0471-642103</td>
+<td>grasleitenhuette@tiersertal.com</td>
+<td>www.tiersertal.com/grasleiten</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>17</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIRES</td>
+<td>BOLZANO</td>
+<td>Passo Santner</td>
+<td>Santnerpass-H�tte</td>
+<td>2734</td>
+<td>Privato</td>
+<td>340-6562228</td>
+<td>CHIUSO</td>
+<td>CHIUSO</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIRES</td>
+<td>BOLZANO</td>
+<td>R� Alberto</td>
+<td>Gartl-H�tte</td>
+<td>2621</td>
+<td>Privato</td>
+<td>0462-763428</td>
+<td>info@rifugiorealberto.com</td>
+<td>www.rifugiorealberto.com</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>10</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIRES</td>
+<td>BOLZANO</td>
+<td>Tschafon (Monte Cavone)</td>
+<td>Tschafon-H�tte</td>
+<td>1733</td>
+<td>Privato</td>
+<td>347-6586796</td>
+<td>info@schutzhaus.tschafon.com</td>
+<td>www.schutzhaus-tschafon.com</td>
+<td>Catinaccio - Sciliar - Sassolungo</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIROLO</td>
+<td>BOLZANO</td>
+<td>Bocker</td>
+<td>Bocker-H�tte</td>
+<td>1717</td>
+<td>Interessenza Spronser Alp</td>
+<td>0473-945544</td>
+<td></td>
+<td>www.bockerhuette.com</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>TIROLO</td>
+<td>BOLZANO</td>
+<td>Oberkaser</td>
+<td>Oberkaser-H�tte</td>
+<td>2135</td>
+<td>Interessenza Spronser Alp</td>
+<td>0473-923488</td>
+<td></td>
+<td>www.dorftirol.com/oberkaseralm</td>
+<td>Sesvenna - Alpi Venoste e Stubai - Tessa</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>ULTIMO</td>
+<td>BOLZANO</td>
+<td>U. Canziani</td>
+<td>H�chster-H�tte</td>
+<td>2560</td>
+<td>C.A.I.</td>
+<td>0473-798120</td>
+<td>info@rifugiocanziani.it</td>
+<td>www.rifugiocanziani.it</td>
+<td>Ortles - Mendola</td>
+<td>12</td>
+<td>true</td>
+</tr>
+<tr>
+<td>VAL DI VIZZE</td>
+<td>BOLZANO</td>
+<td>Gran Pilastro</td>
+<td>Hochfeiler-H�tte</td>
+<td>2710</td>
+<td>AVS</td>
+<td>0472-646071</td>
+<td>info@hochfeilerhuette.it</td>
+<td>www.hochfeilerhuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>19</td>
+<td>true</td>
+</tr>
+<tr>
+<td>VAL DI VIZZE</td>
+<td>BOLZANO</td>
+<td>Rifugio Passo di Vizze</td>
+<td>Pfitscherjoch</td>
+<td>2276</td>
+<td>Privato</td>
+<td>0472-630119</td>
+<td>office@pfitscherjochhaus.com</td>
+<td>www.pfitscherjochhaus.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>15</td>
+<td>true</td>
+</tr>
+<tr>
+<td>VAL DI VIZZE</td>
+<td>BOLZANO</td>
+<td>Venna alla Gerla</td>
+<td>Landshuterh. (Europah.)</td>
+<td>2690</td>
+<td>C.A.I.</td>
+<td>0472-646076</td>
+<td>info@europahuette.it</td>
+<td>www.europahuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>18</td>
+<td>true</td>
+</tr>
+<tr>
+<td>VAL DI VIZZE</td>
+<td>BOLZANO</td>
+<td>Vipiteno</td>
+<td>Sterzinger-H�tte</td>
+<td>2344</td>
+<td>AVS</td>
+<td>0472-646074</td>
+<td></td>
+<td>www.sterzingerhuette.it</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>14</td>
+<td>true</td>
+</tr>
+<tr>
+<td>VALLE AURINA</td>
+<td>BOLZANO</td>
+<td>Vitt.Veneto Sasso Nero</td>
+<td>Schwarzenstein-H�tte</td>
+<td>2922</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td></td>
+<td>knapp@rolmail.net</td>
+<td>www.schwarzensteinhuette.com</td>
+<td>Alpi Aurine - Vedrette di Ries</td>
+<td>15</td>
+<td>false</td>
+</tr>
+<tr>
+<td>VARNA</td>
+<td>BOLZANO</td>
+<td>Forcella Vallaga</td>
+<td>Flaggerscharten-H�tte</td>
+<td>2481</td>
+<td>Provincia Autonoma di Bolzano</td>
+<td>0471-625251</td>
+<td>info@flaggerschartenhuette.com</td>
+<td>www.flaggerschartenhuette.com</td>
+<td>Monti Sarentini</td>
+<td>20</td>
+<td>true</td>
+</tr>
+<tr>
+<td>VELTURNO</td>
+<td>BOLZANO</td>
+<td>Lago Rodella</td>
+<td>Radlsee-H�tte</td>
+<td>2284</td>
+<td>AVS</td>
+<td>0472-855230</td>
+<td>info@radlseehuette.it</td>
+<td>www.radlseehuette.it</td>
+<td>Monti Sarentini</td>
+<td>19</td>
+<td>true</td>
+</tr>
+</table>
+</body>
+</html>

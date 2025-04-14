@@ -334,4 +334,34 @@ public class GestoreCsv {
             throw new RuntimeException(e);
         }
     }
+
+    //Crea html che visualizzi il file
+    public void creahtml(){
+        try(BufferedReader reader=new BufferedReader(new FileReader(this.fileAnalizzare)); PrintWriter writer=new PrintWriter(new FileWriter("pratica12-25/src/main/resources/com/example/pratica1225/dati/index.html",false))){
+            writer.print("<!DOCTYPE html>\n<html lang=\"it\">\n<head>\n<title>CSV VISUALIZZATO</title>\n" +
+                    "<style>\n" +
+                    "body {\n" +
+                    "    font-family: Arial, sans-serif;\n" +
+                    "    background-color: #f4f4f4;\n" +
+                    "    justify-content: center;\n" +
+                    "}\n" +
+                    "</style>\n" +
+                    "</head>\n<body>\n<h1>Tabella dei valori contenuti</h1>\n<h6>A seguire si ritrova il contenuto del file csv.</h6>\n");
+            writer.print("<table>\n<tr>\n");
+            //Intestazione
+            String intestazione=reader.readLine();
+            for (String campoIntestazione : intestazione.split(";")) writer.println("<th>"+campoIntestazione.trim()+"</th>");
+            writer.println("</tr>");
+            //Corpo
+            String next;
+            while ((next= reader.readLine())!=null) {
+                writer.println("<tr>");
+                for (String campoCorpo : next.split(";")) writer.println("<td>"+campoCorpo.trim()+"</td>");
+                writer.println("</tr>");
+            }
+            writer.println("</table>\n</body>\n</html>");
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

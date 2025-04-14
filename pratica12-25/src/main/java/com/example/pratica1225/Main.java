@@ -23,6 +23,7 @@ public class Main {
                 System.out.println("9. Cancella logicamente un record");
                 System.out.println("10. Visualizza campi visibili");
                 System.out.println("11. Spaziamento fisso");
+                System.out.println("12. Crea Html");
                 System.out.println("0. Esci");
                 System.out.print("Scelta: ");
                 scelta =Integer.parseInt(in.nextLine());
@@ -144,6 +145,11 @@ public class Main {
                         gestore.spaziamentoFisso();
                         System.out.println("Attendi caro");
                         System.out.println("Spaziamento fisso:\n" + gestore.vediCampi());
+                        break;
+                    case 12:
+                        System.out.println("Attendi caro");
+                        gestore.creahtml();
+                        System.out.println("Fatto");
                         break;
                     case 0:
                         System.out.println("Ciaoooo");

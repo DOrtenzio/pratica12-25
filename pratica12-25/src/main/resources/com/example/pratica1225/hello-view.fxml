@@ -13,7 +13,7 @@
                   <Font name="Tw Cen MT Condensed Extra Bold" size="12.0" />
                </font>
             </Label>
-            <ScrollPane fitToWidth="true" fitToHeight="true" layoutX="17.0" layoutY="58.0" prefHeight="251.0" prefWidth="424.0" style="-fx-border-color: e6ccb2; -fx-border-width: 0;" vbarPolicy="ALWAYS">
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="17.0" layoutY="58.0" prefHeight="251.0" prefWidth="424.0" style="-fx-border-color: e6ccb2; -fx-border-width: 0;" vbarPolicy="ALWAYS">
                <content>
                   <AnchorPane minWidth="0.0" prefWidth="396.0" style="-fx-background-color: #e6ccb2;">
                      <children>
@@ -93,7 +93,13 @@
                   <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
                </font>
             </Button>
-         </children></AnchorPane>
+            <Button fx:id="b12" layoutX="405.0" layoutY="107.0" mnemonicParsing="false" onAction="#creaHTML" prefHeight="25.0" prefWidth="103.0" style="-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;" text="HTML">
+               <font>
+                  <Font name="Tw Cen MT Condensed Extra Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="box1" layoutX="-2.0" layoutY="-2.0" prefHeight="62.0" prefWidth="535.0" style="-fx-background-color: #b59f8a; -fx-background-radius: 0 48 48 0; -fx-border-radius: 0 48 48 0; -fx-border-color: ede0d4;">
          <children>
             <Label layoutX="131.0" layoutY="10.0" prefHeight="43.0" prefWidth="290.0" text="Gestore CSV " textFill="#e3dcdcdf">

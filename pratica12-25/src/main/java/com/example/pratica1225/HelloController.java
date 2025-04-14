@@ -10,6 +10,10 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.util.*;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 
 public class HelloController{
     private GestoreCsv gestoreCsv;
@@ -17,7 +21,7 @@ public class HelloController{
     @FXML
     private AnchorPane box1,box2,box3,infoAnch;
     @FXML
-    private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11;
+    private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
     @FXML
     private Label prefLabel,infoLab;
     @FXML
@@ -65,6 +69,8 @@ public class HelloController{
         b10.setOnMouseExited(event -> b10.setStyle("-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
         b11.setOnMouseMoved(event -> b11.setStyle("-fx-border-color: #42f5a7; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
         b11.setOnMouseExited(event -> b11.setStyle("-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
+        b12.setOnMouseMoved(event -> b12.setStyle("-fx-border-color: #42f5a7; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
+        b12.setOnMouseExited(event -> b12.setStyle("-fx-border-color: #bd8e60; -fx-background-color: e6ccb2; -fx-border-radius: 13 0; -fx-background-radius: 12 0;"));
     }
 
     //METODI
@@ -452,6 +458,25 @@ public class HelloController{
             errorHelp(e.getMessage());
         } finally {
             addNewRecordList("Spazia campi");
+        }
+    }
+
+    @FXML
+    public void creaHTML(){
+        try {
+            prefVBox.getChildren().clear();
+            gestoreCsv.creahtml();
+            prefLabel.setText("HTML creato con successo");
+            if (Desktop.isDesktopSupported()){
+                Desktop desktop = Desktop.getDesktop();
+                desktop.open(new File("pratica12-25/src/main/resources/com/example/pratica1225/dati/index.html"));
+            }
+        } catch (RuntimeException e) {
+            errorHelp(e.getMessage());
+        } catch (IOException e) {
+            errorHelp(e.getMessage());
+        } finally {
+            addNewRecordList("HTML");
         }
     }
 
