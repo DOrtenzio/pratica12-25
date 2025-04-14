@@ -343,8 +343,13 @@ public class GestoreCsv {
                     "body {\n" +
                     "    font-family: Arial, sans-serif;\n" +
                     "    background-color: #f4f4f4;\n" +
+                    "    display: flex;\n" +
+                    "    flex-direction: column;\n" +
                     "    justify-content: center;\n" +
                     "}\n" +
+                    "td {\n" +
+                    "  text-align: center;\n" +
+                    "}\n"+
                     "</style>\n" +
                     "</head>\n<body>\n<h1>Tabella dei valori contenuti</h1>\n<h6>A seguire si ritrova il contenuto del file csv.</h6>\n");
             writer.print("<table>\n<tr>\n");
@@ -355,9 +360,12 @@ public class GestoreCsv {
             //Corpo
             String next;
             while ((next= reader.readLine())!=null) {
-                writer.println("<tr>");
-                for (String campoCorpo : next.split(";")) writer.println("<td>"+campoCorpo.trim()+"</td>");
-                writer.println("</tr>");
+                String [] s=next.split(";");
+                if (Boolean.parseBoolean(s[s.length-1].trim())) { //VEDO SOLO I NON CANCELLATI
+                    writer.println("<tr>");
+                    for (String campoCorpo : s) writer.println("<td>" + campoCorpo.trim() + "</td>");
+                    writer.println("</tr>");
+                }
             }
             writer.println("</table>\n</body>\n</html>");
         }catch (IOException e){
